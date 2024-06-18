@@ -20,7 +20,7 @@ impl CommandHandler {
         map.into_read_only()
     }
 
-    pub async fn command_run(&self, ctx: &Context, message: &Message) -> BoxResult<()> {
+    pub async fn on_message(&self, ctx: &Context, message: &Message) -> BoxResult {
         if let Some(command_str) = message.content.strip_prefix(PREFIX) {
             let (command_name, text) = command_str
                 .split_once(' ')

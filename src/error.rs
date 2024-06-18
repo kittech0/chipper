@@ -4,7 +4,7 @@ use std::error::Error;
 use log::error;
 use thiserror::Error;
 
-pub type BoxResult<T> = Result<T, BoxError>;
+pub type BoxResult<T = ()> = Result<T, BoxError>;
 
 #[derive(Error, Debug)]
 pub enum BoxError {

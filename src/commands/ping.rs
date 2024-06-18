@@ -8,7 +8,7 @@ pub struct PingCommand;
 
 #[async_trait]
 impl Command for PingCommand {
-    async fn run(&self, ctx: &Context, message: &Message, _: Option<&str>) -> BoxResult<()> {
+    async fn run(&self, ctx: &Context, message: &Message, _: Option<&str>) -> BoxResult {
         message.reply_ping(&ctx.http, "Pong!").await?;
         Ok(())
     }
