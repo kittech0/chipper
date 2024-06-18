@@ -1,4 +1,4 @@
-use std::sync::{Arc, LazyLock};
+use std::sync::Arc;
 
 use dashmap::ReadOnlyView;
 use serenity::all::{Context, Message};
@@ -7,12 +7,12 @@ use serenity::async_trait;
 use crate::error::BoxResult;
 
 pub mod handler;
+mod level;
 mod ping;
 
 pub type CommandMap = ReadOnlyView<&'static str, Arc<dyn Command + Send + Sync>>;
 
 const PREFIX: &str = ">";
-pub static COMMAND_HANDLER: LazyLock<CommandHandler> = LazyLock::new(CommandHandler::new);
 
 #[async_trait]
 pub trait Command {

@@ -1,3 +1,4 @@
+use std::array;
 use std::env::VarError;
 use std::error::Error;
 
@@ -14,6 +15,8 @@ pub enum BoxError {
     ClientError(#[from] serenity::Error),
     #[error("Database error")]
     DBError(#[from] sled::Error),
+    #[error("Try from slice error")]
+    TryFromSliceError(#[from] array::TryFromSliceError),
 }
 
 pub fn error_print<E: Error>(err: E) {

@@ -2,6 +2,8 @@
 #![feature(duration_constructors)]
 #![feature(async_drop)]
 
+extern crate core;
+
 use std::env;
 
 use dotenv::dotenv;
@@ -13,6 +15,7 @@ use crate::error::{BoxResult, error_print};
 use crate::events::Events;
 
 mod commands;
+mod db;
 mod error;
 mod events;
 mod levels;
@@ -31,8 +34,10 @@ async fn run() -> BoxResult {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> BoxResult {
     if let Err(error) = run().await {
-        error_print(error);
-    }
+        error_print(&error);
+        return Err(error);
+    };
+    Ok(())
 }

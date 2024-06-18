@@ -2,19 +2,19 @@ use log::info;
 use serenity::all::{Context, EventHandler, Message, Ready};
 use serenity::async_trait;
 
-use crate::commands::COMMAND_HANDLER;
+use crate::commands::CommandHandler;
 use crate::error::error_print;
-use crate::levels::{LEVEL_HANDLER, LevelHandler};
+use crate::levels::LevelHandler;
 
 pub struct Events;
 
 #[async_trait]
 impl EventHandler for Events {
     async fn message(&self, ctx: Context, msg: Message) {
-        if let Err(err) = COMMAND_HANDLER.on_message(&ctx, &msg).await {
+        if let Err(err) = CommandHandler::get().on_message(&ctx, &msg).await {
             error_print(err)
         }
-        if let Err(err) = LEVEL_HANDLER.on_message(&ctx, &msg).await {
+        if let Err(err) = LevelHandler.on_message(&ctx, &msg).await {
             error_print(err)
         }
     }
