@@ -8,43 +8,41 @@ use crate::levels::LevelHandler;
 use crate::utils::error::BoxResult;
 
 impl LevelHandler {
-    pub async fn on_message(&self, _: &Context, msg: &Message) -> BoxResult {
-        if msg.author.bot {
-            return Ok(());
+    pub async fn on_message(&self, ctx: &Context, msg: &Message) -> BoxResult {
+        if !msg.author.bot {
+            let user_id = msg.author.id.get();
+            handle_levels(user_id)
+        } else {
+            Ok(())
         }
-        let user_id = msg.author.id.get();
-
-        handle_levels(user_id)?;
-        Ok(())
     }
 }
 
 fn handle_levels(user_id: u64) -> BoxResult {
-    let data = USERS_TREE
-        .update_and_fetch(user_id.into(), update_levels)?
-        .unwrap();
+    USERS_TREE.update_and_fetch(&user_id.into(), update_levels)?;
     Ok(())
 }
 
 fn update_levels(data: Option<UserData>) -> Option<UserData> {
-    let random_value = rand::thread_rng().gen_range(1..=15) as f64 / 10.;
-    let mut data = data.clone();
-    if let Some(data) = data {
-        let new = f64_le_from(data) + 1. * random_value;
-        Some(new.into())
+    Some(if let Some(mut data) = data {
+        update_exp(&mut data);
+        data
     } else {
-        Some(0_f64.into())
-    }
+        UserData::default()
+    })
 }
 
-fn get_level_exp(level: u32) -> f64 {
+fn update_exp(data: &mut UserData) {
+    let random_value = rand::thread_rng().gen_range(1..=15) as f64 / 10.;
+    data.exp += 1. * random_value;
+}
+
+pub fn level_to_exp(level: u32) -> f64 {
     let level = level as f64;
-    let a = 15.;
-    let b = 2.;
-    a * level - (b * level.cos())
+    10. * level.powi(2)
 }
 
-pub fn f64_le_from<T: AsRef<[u8]>>(data: T) -> f64 {
-    let data = data.as_ref();
-    f64::from_le_bytes(data.try_into().unwrap())
+pub fn exp_to_level(exp: f64) -> u32 {
+    let constant = 1. / 10_f64.sqrt();
+    (constant * exp.sqrt()) as u32
 }

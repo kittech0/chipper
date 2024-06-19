@@ -7,25 +7,16 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f76ede-3c3c-46c8-90d3-3d7bb1e25334" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/database/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/users.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/chipper.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ktfmt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/handler.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/handler.rs" afterDir="false" />
+    <list default="true" id="99f76ede-3c3c-46c8-90d3-3d7bb1e25334" name="Changes" comment="clean up">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commands/level.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/level.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/ping.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/ping.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/error.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/users.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/users.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/levels/handler.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/handler.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cargo.Run chipper.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
     "code.cleanup.on.save": "true",
@@ -138,11 +130,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718818777960</updated>
-      <workItem from="1718818779563" duration="35000" />
+      <workItem from="1718818779563" duration="11326000" />
     </task>
+    <task id="LOCAL-00001" summary="clean up">
+      <option name="closed" value="true" />
+      <created>1718818854400</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718818854400</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up" />
   </component>
 </project>

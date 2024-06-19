@@ -5,6 +5,7 @@ use serenity::async_trait;
 
 use crate::commands::{AStr, Command};
 use crate::database::{UserData, USERS_TREE};
+use crate::levels::handler::{exp_to_level, level_to_exp};
 use crate::utils::error::BoxResult;
 
 pub struct LevelCommand;
@@ -33,14 +34,22 @@ impl Command for LevelCommand {
         } else {
             &message.author
         };
-        let (exp, level) = if let Some(data) = USERS_TREE.get(user.id.into())? {
-            (data.exp, data.level)
+        let exp = if let Some(data) = USERS_TREE.get(&user.id.into())? {
+            data.exp
         } else {
-            USERS_TREE.insert(user.id.into(), &UserData::default())?;
-            (0., 0)
+            USERS_TREE.insert(&user.id.into(), &UserData::default())?;
+            0.
         };
+        let level = exp_to_level(exp);
         message
-            .reply_ping(&ctx.http, format!("Exp: {exp:.1}"))
+            .reply_ping(
+                &ctx.http,
+                format!(
+                    "Level: {}\nExp: {exp:.1}\nNext level exp: {:.1}",
+                    exp_to_level(exp),
+                    level_to_exp(level + 1)
+                ),
+            )
             .await?;
         Ok(())
     }
