@@ -3,8 +3,8 @@ use serenity::all::{Context, EventHandler, Message, Ready};
 use serenity::async_trait;
 
 use crate::commands::CommandHandler;
-use crate::error::error_print;
 use crate::levels::LevelHandler;
+use crate::utils::error::error_print;
 
 pub struct Events;
 
@@ -13,8 +13,7 @@ impl EventHandler for Events {
     async fn message(&self, ctx: Context, msg: Message) {
         if let Err(err) = CommandHandler::get().on_message(&ctx, &msg).await {
             error_print(err)
-        }
-        if let Err(err) = LevelHandler.on_message(&ctx, &msg).await {
+        } else if let Err(err) = LevelHandler.on_message(&ctx, &msg).await {
             error_print(err)
         }
     }

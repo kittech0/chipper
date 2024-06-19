@@ -1,6 +1,8 @@
 #![feature(async_closure, const_trait_impl, effects)]
 #![feature(duration_constructors)]
 #![feature(async_drop)]
+#![feature(let_chains)]
+#![feature(inherent_associated_types)]
 
 extern crate core;
 
@@ -11,14 +13,13 @@ use log::LevelFilter;
 use serenity::all::GatewayIntents;
 use serenity::Client;
 
-use crate::error::{BoxResult, error_print};
-use crate::events::Events;
+use crate::utils::error::BoxResult;
+use crate::utils::events::Events;
 
 mod commands;
-mod db;
-mod error;
-mod events;
+mod database;
 mod levels;
+mod utils;
 
 async fn run() -> BoxResult {
     env_logger::builder().filter_level(LevelFilter::Info).init();
@@ -35,9 +36,5 @@ async fn run() -> BoxResult {
 
 #[tokio::main]
 async fn main() -> BoxResult {
-    if let Err(error) = run().await {
-        error_print(&error);
-        return Err(error);
-    };
-    Ok(())
+    run().await
 }
